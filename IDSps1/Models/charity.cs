@@ -1,13 +1,17 @@
-﻿namespace IDSps1.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace IDSps1.Models
 {
-    public class charity
+    public class Charity
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
         public string NGO { get; set; }
 
         public string Requirements { get; set; }
 
-        public charity()
+        public Charity()
         {
             
         }

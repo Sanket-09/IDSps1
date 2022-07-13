@@ -1,0 +1,41 @@
+﻿@model IEnumerable<IDSps1.Models.Charity>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>NGO List and Requirements</h1>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                NGO
+            </th>
+            <th>
+                Requirements
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width="50%">
+                    @obj.Id
+                </td>
+                <td width="50%">
+                    @obj.NGO
+                </td>
+                <td width="50%">
+                    @obj.Requirements
+                </td>
+                <td>
+                    <a asp-action="Payment" asp-route-id="@obj.Id">Donate</a> 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
