@@ -23,8 +23,8 @@ namespace IDSps1.Controllers
         // GET: charities
         public async Task<IActionResult> Index()
         {
-              return _context.charity != null ? 
-                          View(await _context.charity.ToListAsync()) :
+              return _context.Charity != null ? 
+                          View(await _context.Charity.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.charity'  is null.");
         }
 
@@ -37,18 +37,18 @@ namespace IDSps1.Controllers
         // POST: charity/ShowSearchResults
         public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
         {
-            return View("Index", await _context.charity.Where( j => j.NGO.Contains(SearchPhrase)).ToListAsync());
+            return View("Index", await _context.Charity.Where( j => j.NGO.Contains(SearchPhrase)).ToListAsync());
         }
 
         // GET: charities/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.charity == null)
+            if (id == null || _context.Charity == null)
             {
                 return NotFound();
             }
 
-            var charity = await _context.charity
+            var charity = await _context.Charity
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (charity == null)
             {
@@ -70,7 +70,7 @@ namespace IDSps1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NGO,Requirements")] charity charity)
+        public async Task<IActionResult> Create([Bind("Id,NGO,Requirements")] Charity charity)
         {
             if (ModelState.IsValid)
             {
@@ -84,12 +84,12 @@ namespace IDSps1.Controllers
         // GET: charities/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.charity == null)
+            if (id == null || _context.Charity == null)
             {
                 return NotFound();
             }
 
-            var charity = await _context.charity.FindAsync(id);
+            var charity = await _context.Charity.FindAsync(id);
             if (charity == null)
             {
                 return NotFound();
@@ -102,7 +102,7 @@ namespace IDSps1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NGO,Requirements")] charity charity)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NGO,Requirements")] Charity charity)
         {
             if (id != charity.Id)
             {
@@ -137,12 +137,12 @@ namespace IDSps1.Controllers
         // GET: charities/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.charity == null)
+            if (id == null || _context.Charity == null)
             {
                 return NotFound();
             }
 
-            var charity = await _context.charity
+            var charity = await _context.Charity
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (charity == null)
             {
@@ -157,14 +157,14 @@ namespace IDSps1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.charity == null)
+            if (_context.Charity == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.charity'  is null.");
             }
-            var charity = await _context.charity.FindAsync(id);
+            var charity = await _context.Charity.FindAsync(id);
             if (charity != null)
             {
-                _context.charity.Remove(charity);
+                _context.Charity.Remove(charity);
             }
             
             await _context.SaveChangesAsync();
@@ -173,7 +173,7 @@ namespace IDSps1.Controllers
 
         private bool charityExists(int id)
         {
-          return (_context.charity?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Charity?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

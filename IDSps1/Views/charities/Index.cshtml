@@ -1,4 +1,4 @@
-﻿@model IEnumerable<IDSps1.Models.charity>
+﻿@model IEnumerable<IDSps1.Models.Charity>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.NGO)
             </th>
             <th>
@@ -25,14 +28,17 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.NGO)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Requirements)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
