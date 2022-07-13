@@ -10,6 +10,7 @@ namespace IDSps1.Data
             : base(options)
         {
         }
-        public DbSet<IDSps1.Models.charity>? charity { get; set; }
+        public DbSet<Charity> Charity { get; set; }
+        public DbSet<Review> Reviews { get; set; }
     }
 }
