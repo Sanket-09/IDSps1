@@ -1,5 +1,6 @@
 html {
-  font-size: 14px;
+  font-size: 54px;
+  padding: 0px 25px 0px 25px
 }
 
 @media (min-width: 768px) {

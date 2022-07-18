@@ -20,6 +20,7 @@ namespace IDSps1.Controllers
             _context = context;
         }
 
+       
         // GET: charities
         public async Task<IActionResult> Index()
         {
@@ -27,7 +28,7 @@ namespace IDSps1.Controllers
                           View(await _context.Charity.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.charity'  is null.");
         }
-
+        [Authorize]
         // GET: charity/ShowSearchForm
         public async Task<IActionResult> ShowSearchForm()
         {
@@ -35,6 +36,7 @@ namespace IDSps1.Controllers
         }
 
         // POST: charity/ShowSearchResults
+        [Authorize]
         public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
         {
             return View("Index", await _context.Charity.Where( j => j.NGO.Contains(SearchPhrase)).ToListAsync());
